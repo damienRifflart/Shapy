@@ -1,2 +1,2 @@
 # Shapy
-iOs Fitness App
+Developping my own iOs Fitness app in XCode.

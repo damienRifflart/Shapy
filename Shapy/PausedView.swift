@@ -17,7 +17,7 @@ struct PausedView: View {
     @State private var timeRemaining: CGFloat = defaultTimeRemaining
     @State private var isExerciceViewActive = false
     @State private var isFinishedViewActive = false
-    @ObservedObject var variables: Var
+    @ObservedObject var variables: DataManager
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -279,8 +279,7 @@ struct PausedView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let variables = Var()
-        return PausedView(variables: variables)
+        PausedView(variables: DataManager())
     }
 }
 

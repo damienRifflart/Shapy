@@ -11,7 +11,8 @@ extension Color {
 
 struct LandingView: View {
     @State private var isExerciceViewActive = false
-    @StateObject private var sharedVariables = Var()
+    @State private var isSettingsViewActive = false
+    @ObservedObject var variables: DataManager
 
     var body: some View {
         ZStack{
@@ -37,12 +38,11 @@ struct LandingView: View {
                     .fontWeight(.semibold)
                     .padding(.bottom, 20)
                 
-                
                 Image("mockup")
                 Spacer()
                 
                 // Settings Button
-                Button(action: { isExerciceViewActive.toggle()
+                Button(action: { isSettingsViewActive.toggle()
                 }) {
                     Text("Paramètre")
                         .font(.system(size: 30, weight: .bold))
@@ -69,14 +69,22 @@ struct LandingView: View {
                 }
             }
             .fullScreenCover(isPresented: $isExerciceViewActive) {
-                ExerciceView(variables: sharedVariables)
+                ExerciceView(variables: variables)
+            }
+                
+            .fullScreenCover(isPresented: $isSettingsViewActive) {
+                SettingsView(variables: variables)
+                
             }
         }
     }
 }
 
 struct LandingView_Previews: PreviewProvider {
+    @StateObject static var dataManager = DataManager()
+
     static var previews: some View {
-        LandingView()
+        LandingView(variables: dataManager)
     }
 }
+

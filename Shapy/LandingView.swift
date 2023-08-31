@@ -48,7 +48,7 @@ struct LandingView: View {
                     Spacer()
                     }
                 
-                Image("miockup")
+                Image("mockup")
                     .frame(height: 400)
                 
                 // Second Page Button

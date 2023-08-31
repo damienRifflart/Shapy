@@ -36,7 +36,7 @@ struct LandingView: View {
                             .font(.system(size: 50))
                             .padding(.top, 110)
                         
-                        Text("Damien")
+                        Text("Dams")
                             .foregroundColor(Color(hex: 0xE6D2F7))
                             .font(.system(size: 50))
                             .fontWeight(.semibold)

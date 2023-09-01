@@ -57,7 +57,7 @@ struct FinishView: View {
                 .padding(.bottom, 30)
             }
             .fullScreenCover(isPresented: $isLandingViewActive) {
-                LandingView()
+                LandingView(variables: DataManager())
                 }
             }
         }

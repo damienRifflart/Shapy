@@ -7,19 +7,9 @@
 
 import SwiftUI
 
-class Var: ObservableObject {
-    @Published var currentSerie: Int = 1
-    @Published var exerciceOne: String = "First"
-    @Published var exerciceTwo: String = "Second"
-    @Published var exerciceThree: String = ""
-    @Published var exerciceFour: String = ""
-    @Published var exerciceIndex: Int = 0
-    
-}
-
 struct ExerciceView: View {
     @State private var isPausedViewActive = false
-    @ObservedObject var variables: Var
+    @ObservedObject var variables: DataManager
     
     var body: some View {
         
@@ -193,8 +183,7 @@ struct ExerciceView: View {
 
 struct ExerciceView_Previews: PreviewProvider {
     static var previews: some View {
-        let variables = Var()
-        return ExerciceView(variables: variables)
+        ExerciceView(variables: DataManager())
     }
 }
 

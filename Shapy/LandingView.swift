@@ -27,23 +27,10 @@ struct LandingView: View {
                 Spacer()
                 
                 // Title Text
-                HStack{
-                    Spacer()
-                    Text("v0.8")
-                        .foregroundColor(Color.gray.opacity(0.5))
-                        .font(.system(size:25))
-                        .padding(.top,150)
-                    Spacer()
-                    
-                    Text("Bienvenue")
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 50))
-                        .padding(.top, 150)
-                        .padding(.trailing, 60)
-                    
-                    Spacer()
-            
-                }
+                Text("Bienvenue")
+                    .foregroundColor(Color.white)
+                    .font(.system(size: 50))
+                    .padding(.top, 150)
                 
                 Text("Damien")
                     .foregroundColor(Color(hex: 0xE6D2F7))

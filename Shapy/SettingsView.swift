@@ -28,7 +28,7 @@ struct SettingsView: View {
                     // Back Button
                     Button(action: { isLandingViewActive.toggle() }) {
                         Text("Retour")
-                            .font(.system(size: 27, weight: .semibold))
+                            .font(.system(size: 30, weight: .bold))
                             .foregroundColor(Color(hex: 0x0E0215))
                             .padding()
                             .frame(width: 130, height:60)
@@ -42,7 +42,7 @@ struct SettingsView: View {
                     // Save Button
                     Button(action: { saveButton() }) {
                         Text("Enregistrer")
-                            .font(.system(size: 27, weight: .semibold))
+                            .font(.system(size: 30, weight: .bold))
                             .foregroundColor(Color(hex: 0x0E0215))
                             .padding()
                             .frame(width: 188, height:60)
@@ -82,7 +82,7 @@ struct SettingsView: View {
                     .padding(.leading, 40.0)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
-                TextField(" 25 Abdos", text: $exerciceTwoInput)
+                TextField(" 15 Pompes", text: $exerciceTwoInput)
                     .background(Color.gray.opacity(0.2))
                     .foregroundColor(Color(hex: 0xE6D2F7))
                     .frame(width: 300)
@@ -99,7 +99,7 @@ struct SettingsView: View {
                     .padding(.leading, 40.0)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
-                TextField(" 10 Fentes", text: $exerciceThreeInput)
+                TextField(" 15 Pompes", text: $exerciceThreeInput)
                     .background(Color.gray.opacity(0.2))
                     .foregroundColor(Color(hex: 0xE6D2F7))
                     .frame(width: 300)
@@ -116,7 +116,7 @@ struct SettingsView: View {
                     .padding(.leading, 40.0)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
-                TextField(" 5 Squats", text: $exerciceFourInput)
+                TextField(" 15 Pompes", text: $exerciceFourInput)
                     .background(Color.gray.opacity(0.2))
                     .foregroundColor(Color(hex: 0xE6D2F7))
                     .frame(width: 300)

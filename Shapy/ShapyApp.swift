@@ -11,7 +11,7 @@ import SwiftUI
 struct ShapyApp: App {
     var body: some Scene {
         WindowGroup {
-            LandingView(variables: DataManager())
+            ContentView()
         }
     }
 }

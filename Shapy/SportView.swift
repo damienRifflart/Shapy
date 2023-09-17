@@ -88,8 +88,10 @@ struct SportView: View {
                         .font(.system(size:50))
                 }
                 
-                TimerView(breakViewActive: $breakViewActive, forBreakMode: false)
-                    .padding(.bottom, 60)
+                if !breakViewActive{
+                    TimerView(breakViewActive: $breakViewActive, forBreakMode: false)
+                        .padding(.bottom, 60)
+                }
                 
                 Spacer()
                 

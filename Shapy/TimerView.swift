@@ -47,7 +47,7 @@ struct TimerView: View {
         
         .onReceive(timer, perform: { _ in
             guard isActive else { return }
-            if timeRemaining > 0.5 {
+            if timeRemaining > 0 {
                 timeRemaining -= 1
                 
             } else {
@@ -55,12 +55,13 @@ struct TimerView: View {
                 // if that was called from sportview
                 if !forBreakMode{
                     breakViewActive = true
-                    timeRemaining = defaultTimeRemaining
                     
                 // if that was called from breakview
                 } else {
                     breakViewActive = false
                 }
+
+
             }
         })
     }

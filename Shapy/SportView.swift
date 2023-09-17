@@ -11,6 +11,7 @@ struct BreakView: View{
     
     var bgColor: CGColor
     var accentColor: Color
+    @Binding var breakViewActive: Bool
     
     var body: some View{
         
@@ -34,6 +35,11 @@ struct BreakView: View{
                         .foregroundColor(accentColor)
                 }
                 .font(.system(size:50))
+                
+                Spacer()
+                
+                // Timer
+                TimerView(breakViewActive: $breakViewActive, forBreakMode: true)
                 
                 Spacer()
                 
@@ -81,7 +87,10 @@ struct SportView: View {
                         .foregroundColor(Color.accentColor)
                         .font(.system(size:50))
                 }
-                    
+                
+                TimerView(breakViewActive: $breakViewActive, forBreakMode: false)
+                    .padding(.bottom, 60)
+                
                 Spacer()
                 
                 Button(action: {
@@ -95,7 +104,7 @@ struct SportView: View {
                         .background(accentColor)
                         .cornerRadius(10)
                         .sheet(isPresented: $breakViewActive, content: {
-                            BreakView(bgColor: bgColor, accentColor: accentColor)
+                            BreakView(bgColor: bgColor, accentColor: accentColor, breakViewActive: $breakViewActive)
                         })
                 }
                 .padding(.bottom, 55)

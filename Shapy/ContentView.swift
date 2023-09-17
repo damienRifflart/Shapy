@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView: View {
     
     // Tab Index
-    @State private var selectedTab = 1
+    @State private var selectedTab = 0
     
     // Colors
     let backgroundColor = CGColor(red: 5/255, green: 5/255, blue: 5/255, alpha: 1)

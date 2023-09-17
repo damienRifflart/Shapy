@@ -14,42 +14,39 @@ struct HomeView: View {
     @Binding var selectedTab: Int
     
     var body: some View {
-        NavigationView {
-            ZStack{
-                Color(bgColor)
-                    .ignoresSafeArea()
+        
+        ZStack{
+            Color(bgColor)
+                .ignoresSafeArea()
+            
+            VStack{
+                Text("Hello,")
+                    .font(.system(size:50))
+                    .foregroundColor(Color.white)
+                    .padding(.top, 60)
                 
-                VStack{
-                    Text("Hello,")
-                        .font(.system(size:50))
-                        .foregroundColor(Color.white)
-                    + Text("\nDamien").foregroundColor(Color.accentColor)
-                        .font(.system(size:50))
-                    
-                    Spacer()
-                    
-                    Image("Mockup")
-                    
-                    Spacer()
-                    
-                    Button("Start") {
-                        selectedTab = 1
-                    }
-                    .foregroundColor(Color(bgColor))
-                    .font(.largeTitle)
-                    
-                    .padding()
-                    
-                    // For the bg, it's a rectangle
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.accentColor)
-                            .frame(width: 270, height: 55)
-                    )
-                    
-                    Spacer()
-                    Spacer()
+                Text("Damien")
+                    .font(.system(size:50))
+                    .foregroundColor(Color.accentColor)
+                
+                Spacer()
+                
+                Image("Mockup")
+                
+                Spacer()
+                
+                Button(action: {
+                    selectedTab = 1
+                }){
+                    Text("Start")
+                        .font(.system(size: 30))
+                        .foregroundColor(Color(bgColor))
+                        .padding()
+                        .frame(width: 270, height:55)
+                        .background(accentColor)
+                        .cornerRadius(10)
                 }
+                .padding(.bottom, 60)
             }
         }
     }

@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView: View {
     
     // Tab Index
-    @State private var selectedTab = 0
+    @State private var selectedTab = 1
     
     // Colors
     let backgroundColor = CGColor(red: 5/255, green: 5/255, blue: 5/255, alpha: 1)
@@ -24,7 +24,7 @@ struct ContentView: View {
             SportView(bgColor: backgroundColor, accentColor: accentColor,
                       selectedTab: $selectedTab)
                 .tabItem {
-                    Image(systemName: "dumbbell.fill")
+                    Image(systemName: "bolt.square.fill")
                 }
                 .tag(1)
 

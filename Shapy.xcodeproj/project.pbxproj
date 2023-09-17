@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D73B12202AB6202800478B65 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B121F2AB6202800478B65 /* SettingsView.swift */; };
 		D74D36302AB5EDFB00E05ED7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D362F2AB5EDFB00E05ED7 /* HomeView.swift */; };
 		D74D36322AB5EEA100E05ED7 /* SportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D36312AB5EEA100E05ED7 /* SportView.swift */; };
-		D74D36342AB5EEAD00E05ED7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D36332AB5EEAD00E05ED7 /* SettingsView.swift */; };
 		D75E3DEF2AB604BF00CEB2ED /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = D75E3DEE2AB604BF00CEB2ED /* SwiftUIX */; };
 		D79BF0CB2AA085A3006A8C17 /* ShapyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79BF0CA2AA085A2006A8C17 /* ShapyApp.swift */; };
 		D79BF0CD2AA085A3006A8C17 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79BF0CC2AA085A3006A8C17 /* ContentView.swift */; };
@@ -18,9 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D73B121F2AB6202800478B65 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D74D362F2AB5EDFB00E05ED7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D74D36312AB5EEA100E05ED7 /* SportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportView.swift; sourceTree = "<group>"; };
-		D74D36332AB5EEAD00E05ED7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D79BF0C72AA085A2006A8C17 /* Shapy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shapy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79BF0CA2AA085A2006A8C17 /* ShapyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapyApp.swift; sourceTree = "<group>"; };
 		D79BF0CC2AA085A3006A8C17 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 				D79BF0CC2AA085A3006A8C17 /* ContentView.swift */,
 				D74D362F2AB5EDFB00E05ED7 /* HomeView.swift */,
 				D74D36312AB5EEA100E05ED7 /* SportView.swift */,
-				D74D36332AB5EEAD00E05ED7 /* SettingsView.swift */,
+				D73B121F2AB6202800478B65 /* SettingsView.swift */,
 				D79BF0D02AA085A4006A8C17 /* Preview Content */,
 			);
 			path = Shapy;
@@ -154,7 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D74D36342AB5EEAD00E05ED7 /* SettingsView.swift in Sources */,
+				D73B12202AB6202800478B65 /* SettingsView.swift in Sources */,
 				D74D36302AB5EDFB00E05ED7 /* HomeView.swift in Sources */,
 				D74D36322AB5EEA100E05ED7 /* SportView.swift in Sources */,
 				D79BF0CD2AA085A3006A8C17 /* ContentView.swift in Sources */,

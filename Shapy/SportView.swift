@@ -56,8 +56,8 @@ struct BreakView: View{
 
 struct SportView: View {
     
-    var bgColor: CGColor
-    var accentColor: Color
+    let bgColor: CGColor
+    let accentColor: Color
     @Binding var selectedTab: Int
     @State var breakViewActive:Bool = false
     
@@ -89,8 +89,10 @@ struct SportView: View {
                 }
                 
                 if !breakViewActive{
-                    TimerView(breakViewActive: $breakViewActive, forBreakMode: false)
-                        .padding(.bottom, 60)
+                    if selectedTab == 1{
+                        TimerView(breakViewActive: $breakViewActive, forBreakMode: false)
+                            .padding(.bottom, 60)
+                    }
                 }
                 
                 Spacer()
@@ -109,7 +111,7 @@ struct SportView: View {
                             BreakView(bgColor: bgColor, accentColor: accentColor, breakViewActive: $breakViewActive)
                         })
                 }
-                .padding(.bottom, 55)
+                .padding(.bottom, 81)
                 
             }
         }

@@ -9,8 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     
-    var bgColor: CGColor
-    var accentColor: Color
+    let bgColor: CGColor
+    let accentColor: Color
     @Binding var selectedTab: Int
     
     var body: some View {
@@ -25,7 +25,7 @@ struct HomeView: View {
                     .foregroundColor(Color.white)
                     .padding(.top, 60)
                 
-                Text("Damien")
+                Text("Dams")
                     .font(.system(size:50))
                     .foregroundColor(Color.accentColor)
                 
@@ -46,7 +46,7 @@ struct HomeView: View {
                         .background(accentColor)
                         .cornerRadius(10)
                 }
-                .padding(.bottom, 60)
+                .padding(.bottom, 40)
             }
         }
     }

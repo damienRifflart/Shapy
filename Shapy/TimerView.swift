@@ -8,8 +8,6 @@
 import SwiftUI
 
 let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
-let defaultBreakTimeRemaining: CGFloat = 1
-let defaultSportTimeRemaining: CGFloat = 1
 
 struct TimerViewBreak: View {
     
@@ -17,12 +15,25 @@ struct TimerViewBreak: View {
     let radius: CGFloat = 110
     var isActive: Bool = true
     
+    let test: CGFloat = 1
+    
     @Binding var breakViewActive: Bool
     
     @Binding var setIndex: Int
     @Binding var exerciseIndex: Int
+    @Binding var breakTime: Int
     
-    @State private var timeRemaining: CGFloat = defaultBreakTimeRemaining
+    @State private var timeRemaining: Int
+    
+    init(breakViewActive: Binding<Bool>, setIndex: Binding<Int>, exerciseIndex: Binding<Int>, breakTime: Binding<Int>) {
+        self._breakViewActive = breakViewActive
+        self._setIndex = setIndex
+        self._exerciseIndex = exerciseIndex
+        self._breakTime = breakTime
+        
+        // Initialize timeRemaining with the initial value of breakTime
+        _timeRemaining = State(initialValue: breakTime.wrappedValue)
+    }
     
     var body: some View {
         
@@ -34,10 +45,10 @@ struct TimerViewBreak: View {
                     .stroke(Color.gray.opacity(0.2), style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
                 
                 Circle()
-                    .trim(from: 1 - (timeRemaining / defaultBreakTimeRemaining), to: 1)
+                    .trim(from: 1 - (CGFloat(timeRemaining) / CGFloat(breakTime)), to: 1)
                     
                     // Stroke color
-                    .stroke(timeRemaining > 0.66 ? Color.green : timeRemaining > 0.33 ? Color.yellow : Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
+                    .stroke(timeRemaining > Int(0.66) ? Color.green : timeRemaining > Int(0.33) ? Color.yellow : Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
                     
                     .rotationEffect(.degrees(-90))
                     .animation(.easeInOut, value: timeRemaining)
@@ -88,9 +99,53 @@ struct TimerViewSport: View {
     let radius: CGFloat = 110
     var isActive: Bool = true
     
+    @Binding var setIndex: Int
+    @Binding var exerciseIndex: Int
     @Binding var breakViewActive: Bool
+    var setExercises: [[Exercise]]
     
-    @State private var timeRemaining: CGFloat = defaultSportTimeRemaining
+    @State var defaultTimeRemaining: CGFloat
+    @State private var timeRemaining: CGFloat
+
+    init(setIndex: Binding<Int>, exerciseIndex: Binding<Int>, breakViewActive: Binding<Bool>, setExercises: [[Exercise]]) {
+        self._setIndex = setIndex
+        self._exerciseIndex = exerciseIndex
+        self._breakViewActive = breakViewActive
+        
+        self.setExercises = setExercises
+        
+        // Extract values from bindings
+        let setIndexValue = setIndex.wrappedValue
+        let exerciseIndexValue = exerciseIndex.wrappedValue
+        
+        let defaultTimeRemaining = Self.calculateTimeRemaining(setExercises: setExercises, setIndex: setIndexValue, exerciseIndex: exerciseIndexValue)
+        self._defaultTimeRemaining = State(initialValue: CGFloat(defaultTimeRemaining))
+        self._timeRemaining = State(initialValue: CGFloat(defaultTimeRemaining))
+    }
+    
+    // Function to calculate defaultTimeRemaining
+    static func calculateTimeRemaining(setExercises: [[Exercise]], setIndex: Int, exerciseIndex: Int) -> Int {
+        if setExercises.count > 0 && setExercises[0].count > 0 {
+            
+            switch setExercises[setIndex][exerciseIndex].name {
+                case "Pull-Ups":
+                    return setExercises[setIndex][exerciseIndex].number * 3
+                    
+                case "Push-Ups":
+                    return setExercises[setIndex][exerciseIndex].number * 2
+                    
+                case "Plank":
+                    return setExercises[setIndex][exerciseIndex].number
+                    
+                case "Crunch":
+                    return setExercises[setIndex][exerciseIndex].number * 1
+                    
+                default:
+                    return 0
+            }
+        }
+        return 0
+    }
     
     var body: some View {
         
@@ -102,14 +157,14 @@ struct TimerViewSport: View {
                     .stroke(Color.gray.opacity(0.2), style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
                 
                 Circle()
-                    .trim(from: 1 - (timeRemaining / defaultSportTimeRemaining), to: 1)
-                    
-                    // Stroke color
+                    .trim(from: 1 - (timeRemaining / defaultTimeRemaining), to: 1)
+                
+                // Stroke color
                     .stroke(timeRemaining > 0.66 ? Color.green : timeRemaining > 0.33 ? Color.yellow : Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
-                    
+                
                     .rotationEffect(.degrees(-90))
                     .animation(.easeInOut, value: timeRemaining)
-                    
+                
                 Text("\(Int(timeRemaining))")
                     .font(.system(size: 50))
                     .foregroundColor(Color.white)
@@ -123,9 +178,9 @@ struct TimerViewSport: View {
                 timeRemaining -= 1
                 
             } else {
-
+                
                 breakViewActive = true
-
+                
             }
         })
     }

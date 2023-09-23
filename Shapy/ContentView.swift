@@ -16,6 +16,8 @@ struct ContentView: View {
     let accentColor = Color(red: 242/255, green: 142/255, blue: 61/255)
     
     // Sport variables
+    @State private var breakTime: Int = 1
+    
     @State private var setExercises: [[Exercise]] = [
         [
             Exercise(name: "Pull-Ups", number: 1),
@@ -46,13 +48,13 @@ struct ContentView: View {
                 .tag(0)
 
             SportView(bgColor: backgroundColor, accentColor: accentColor,
-                      selectedTab: $selectedTab, setExercises: $setExercises)
+                      selectedTab: $selectedTab, setExercises: $setExercises, breakTime: $breakTime)
                 .tabItem {
                     Image(systemName: "bolt.square.fill")
                 }
                 .tag(1)
 
-            SettingsView(bgColor: backgroundColor, secondColor: secondColor, accentColor: accentColor, selectedTab: $selectedTab, setExercises: $setExercises)
+            SettingsView(bgColor: backgroundColor, secondColor: secondColor, accentColor: accentColor, selectedTab: $selectedTab, setExercises: $setExercises, breakTime: $breakTime)
                 .tabItem {
                     Image(systemName: "gearshape.fill")
                 }

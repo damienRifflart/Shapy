@@ -15,6 +15,7 @@ struct BreakView: View{
     
     @Binding var setIndex: Int
     @Binding var exerciseIndex: Int
+    @Binding var breakTime: Int
     
     var body: some View{
         
@@ -31,7 +32,7 @@ struct BreakView: View{
                 Spacer()
                 
                 HStack{
-                    Text("40s")
+                    Text(String(breakTime) + "s")
                         .foregroundColor(Color.white)
                     
                     Text("Break")
@@ -42,7 +43,7 @@ struct BreakView: View{
                 Spacer()
                 
                 // Timer
-                TimerViewBreak(breakViewActive: $breakViewActive, setIndex: $setIndex, exerciseIndex: $exerciseIndex)
+                TimerViewBreak(breakViewActive: $breakViewActive, setIndex: $setIndex, exerciseIndex: $exerciseIndex, breakTime: $breakTime)
 
                 
                 Spacer()
@@ -65,9 +66,11 @@ struct SportView: View {
     @Binding var selectedTab: Int
     @State var breakViewActive: Bool = false
     @Binding var setExercises: [[Exercise]]
+    @Binding var breakTime: Int
 
     @State private var setIndex: Int = 0
     @State private var exerciseIndex: Int = 0
+    
     
     var body: some View {
         
@@ -98,7 +101,7 @@ struct SportView: View {
                 
                 if !breakViewActive{
                     if selectedTab == 1{
-                        TimerViewSport(breakViewActive: $breakViewActive)
+                        TimerViewSport(setIndex: $setIndex, exerciseIndex: $exerciseIndex, breakViewActive: $breakViewActive, setExercises: setExercises)
                             .padding(.bottom, 60)
                     }
                 }
@@ -116,7 +119,7 @@ struct SportView: View {
                         .background(accentColor)
                         .cornerRadius(10)
                         .sheet(isPresented: $breakViewActive, content: {
-                            BreakView(bgColor: bgColor, accentColor: accentColor, breakViewActive: $breakViewActive, setIndex: $setIndex, exerciseIndex: $exerciseIndex)
+                            BreakView(bgColor: bgColor, accentColor: accentColor, breakViewActive: $breakViewActive, setIndex: $setIndex, exerciseIndex: $exerciseIndex, breakTime: $breakTime)
                         })
                 }
                 .padding(.bottom, 81)

@@ -132,7 +132,6 @@ struct ChangeSetsSettings: View {
     }
 }
 
-
 struct ChangeSetsSettings_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

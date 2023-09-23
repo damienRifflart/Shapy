@@ -13,6 +13,9 @@ struct BreakView: View{
     var accentColor: Color
     @Binding var breakViewActive: Bool
     
+    @Binding var setIndex: Int
+    @Binding var exerciseIndex: Int
+    
     var body: some View{
         
         ZStack{
@@ -20,7 +23,7 @@ struct BreakView: View{
                 .ignoresSafeArea()
             
             VStack{
-                Text("Set 1")
+                Text("Set " + String(setIndex+1))
                     .foregroundColor(Color.white)
                     .font(.system(size:30))
                     .padding(.top, 60)
@@ -39,7 +42,8 @@ struct BreakView: View{
                 Spacer()
                 
                 // Timer
-                TimerView(breakViewActive: $breakViewActive, forBreakMode: true)
+                TimerViewBreak(breakViewActive: $breakViewActive, setIndex: $setIndex, exerciseIndex: $exerciseIndex)
+
                 
                 Spacer()
                 
@@ -59,11 +63,11 @@ struct SportView: View {
     let bgColor: CGColor
     let accentColor: Color
     @Binding var selectedTab: Int
-    @State var breakViewActive:Bool = false
-    @Binding var setOneExercises: [Exercise]
-    @Binding var setTwoExercises: [Exercise]
-    @Binding var setThreeExercises: [Exercise]
-    
+    @State var breakViewActive: Bool = false
+    @Binding var setExercises: [[Exercise]]
+
+    @State private var setIndex: Int = 0
+    @State private var exerciseIndex: Int = 0
     
     var body: some View {
         
@@ -73,7 +77,7 @@ struct SportView: View {
             
             VStack{
                 
-                Text("Set 1")
+                Text("Set " + String(setIndex+1))
                     .foregroundColor(Color.white)
                     .font(.system(size:30))
                     .padding(.top, 60)
@@ -82,19 +86,19 @@ struct SportView: View {
                 
                 // Exercise Text
                 VStack{
-                    Text(String(setOneExercises[0].number))
+                    Text(String(setExercises[setIndex][exerciseIndex].number))
                         .font(.system(size:50))
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
                     
-                    Text(setOneExercises[0].name)
+                    Text(String(setExercises[setIndex][exerciseIndex].name))
                         .foregroundColor(Color.accentColor)
                         .font(.system(size:50))
                 }
                 
                 if !breakViewActive{
                     if selectedTab == 1{
-                        TimerView(breakViewActive: $breakViewActive, forBreakMode: false)
+                        TimerViewSport(breakViewActive: $breakViewActive)
                             .padding(.bottom, 60)
                     }
                 }
@@ -112,7 +116,7 @@ struct SportView: View {
                         .background(accentColor)
                         .cornerRadius(10)
                         .sheet(isPresented: $breakViewActive, content: {
-                            BreakView(bgColor: bgColor, accentColor: accentColor, breakViewActive: $breakViewActive)
+                            BreakView(bgColor: bgColor, accentColor: accentColor, breakViewActive: $breakViewActive, setIndex: $setIndex, exerciseIndex: $exerciseIndex)
                         })
                 }
                 .padding(.bottom, 81)

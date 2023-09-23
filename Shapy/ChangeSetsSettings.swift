@@ -16,7 +16,7 @@ struct DisclosureGroupTemplate: View {
 
     @Binding var setExercises: [Exercise]
 
-    var allExercises = ["Pull-Ups", "Push-Ups", "Crunch", "Plank", "Nothing"]
+    var allExercises = ["Pull-Ups", "Push-Ups", "Crunch", "Plank"]
 
     var body: some View {
         GroupBox() {
@@ -79,9 +79,7 @@ struct ChangeSetsSettings: View {
     let bgColor: CGColor
     let secondColor: CGColor
     let accentColor: Color
-    @Binding var setOneExercisesArray: [Exercise]
-    @Binding var setTwoExercisesArray: [Exercise]
-    @Binding var setThreeExercisesArray: [Exercise]
+    @Binding var setExercises: [[Exercise]]
     
     var body: some View {
         ZStack{
@@ -96,7 +94,7 @@ struct ChangeSetsSettings: View {
                         RoundedRectangle(cornerRadius: 8)
                             .fill(Color(bgColor))
                         DisclosureGroup("Set 1") {
-                            DisclosureGroupTemplate(bgColor: bgColor, secondColor: secondColor, accentColor: accentColor, setExercises: $setOneExercisesArray)
+                            DisclosureGroupTemplate(bgColor: bgColor, secondColor: secondColor, accentColor: accentColor, setExercises: $setExercises[0])
                         }
                         .foregroundColor(Color.white)
                         .frame(width: 300)
@@ -108,7 +106,7 @@ struct ChangeSetsSettings: View {
                         RoundedRectangle(cornerRadius: 8)
                             .fill(Color(bgColor))
                         DisclosureGroup("Set 2") {
-                            DisclosureGroupTemplate(bgColor: bgColor, secondColor: secondColor, accentColor: accentColor, setExercises: $setTwoExercisesArray)
+                            DisclosureGroupTemplate(bgColor: bgColor, secondColor: secondColor, accentColor: accentColor, setExercises: $setExercises[1])
                         }
                         .foregroundColor(Color.white)
                         .frame(width: 300)
@@ -120,7 +118,7 @@ struct ChangeSetsSettings: View {
                         RoundedRectangle(cornerRadius: 8)
                             .fill(Color(bgColor))
                         DisclosureGroup("Set 3") {
-                            DisclosureGroupTemplate(bgColor: bgColor, secondColor: secondColor, accentColor: accentColor, setExercises: $setThreeExercisesArray)
+                            DisclosureGroupTemplate(bgColor: bgColor, secondColor: secondColor, accentColor: accentColor, setExercises: $setExercises[2])
                         }
                         .foregroundColor(Color.white)
                         .frame(width: 300)

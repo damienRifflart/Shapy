@@ -16,22 +16,22 @@ struct ContentView: View {
     let accentColor = Color(red: 242/255, green: 142/255, blue: 61/255)
     
     // Sport variables
-    @State private var setOneExercises: [Exercise] = [
-        Exercise(name: "Push-Ups", number: 1),
-        Exercise(name: "Exercise Two", number: 1),
-        Exercise(name: "Exercise Three", number: 1)
-    ]
-    
-    @State private var setTwoExercises: [Exercise] = [
-        Exercise(name: "Pull-Ups", number: 1),
-        Exercise(name: "Exercise Two", number: 1),
-        Exercise(name: "Exercise Three", number: 1)
-    ]
-    
-    @State private var setThreeExercises: [Exercise] = [
-        Exercise(name: "Plank", number: 1),
-        Exercise(name: "Exercise Two", number: 1),
-        Exercise(name: "Exercise Three", number: 1)
+    @State private var setExercises: [[Exercise]] = [
+        [
+            Exercise(name: "Pull-Ups", number: 1),
+            Exercise(name: "Push-Ups", number: 2),
+            Exercise(name: "Plank", number: 3)
+        ],
+        [
+            Exercise(name: "Pull-Ups", number: 4),
+            Exercise(name: "Push-Ups", number: 5),
+            Exercise(name: "Plank", number: 6)
+        ],
+        [
+            Exercise(name: "Pull-Ups", number: 7),
+            Exercise(name: "Push-Ups", number: 8),
+            Exercise(name: "Plank", number: 9)
+        ]
     ]
     
     var body: some View {
@@ -46,13 +46,13 @@ struct ContentView: View {
                 .tag(0)
 
             SportView(bgColor: backgroundColor, accentColor: accentColor,
-                      selectedTab: $selectedTab, setOneExercises: $setOneExercises, setTwoExercises: $setTwoExercises, setThreeExercises: $setThreeExercises)
+                      selectedTab: $selectedTab, setExercises: $setExercises)
                 .tabItem {
                     Image(systemName: "bolt.square.fill")
                 }
                 .tag(1)
 
-            SettingsView(bgColor: backgroundColor, secondColor: secondColor, accentColor: accentColor, selectedTab: $selectedTab, setOneExercises: $setOneExercises, setTwoExercises: $setTwoExercises, setThreeExercises: $setThreeExercises)
+            SettingsView(bgColor: backgroundColor, secondColor: secondColor, accentColor: accentColor, selectedTab: $selectedTab, setExercises: $setExercises)
                 .tabItem {
                     Image(systemName: "gearshape.fill")
                 }

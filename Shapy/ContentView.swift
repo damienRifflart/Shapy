@@ -1,5 +1,10 @@
 import SwiftUI
 
+struct Exercise {
+    var name: String
+    var number: Int
+}
+
 struct ContentView: View {
     
     // Tab Index
@@ -9,6 +14,25 @@ struct ContentView: View {
     let backgroundColor = CGColor(red: 5/255, green: 5/255, blue: 5/255, alpha: 1)
     let secondColor = CGColor(red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
     let accentColor = Color(red: 242/255, green: 142/255, blue: 61/255)
+    
+    // Sport variables
+    @State private var setOneExercises: [Exercise] = [
+        Exercise(name: "Push-Ups", number: 1),
+        Exercise(name: "Exercise Two", number: 1),
+        Exercise(name: "Exercise Three", number: 1)
+    ]
+    
+    @State private var setTwoExercises: [Exercise] = [
+        Exercise(name: "Pull-Ups", number: 1),
+        Exercise(name: "Exercise Two", number: 1),
+        Exercise(name: "Exercise Three", number: 1)
+    ]
+    
+    @State private var setThreeExercises: [Exercise] = [
+        Exercise(name: "Plank", number: 1),
+        Exercise(name: "Exercise Two", number: 1),
+        Exercise(name: "Exercise Three", number: 1)
+    ]
     
     var body: some View {
         
@@ -22,13 +46,13 @@ struct ContentView: View {
                 .tag(0)
 
             SportView(bgColor: backgroundColor, accentColor: accentColor,
-                      selectedTab: $selectedTab)
+                      selectedTab: $selectedTab, setOneExercises: $setOneExercises, setTwoExercises: $setTwoExercises, setThreeExercises: $setThreeExercises)
                 .tabItem {
                     Image(systemName: "bolt.square.fill")
                 }
                 .tag(1)
 
-            SettingsView(bgColor: backgroundColor, secondColor: secondColor, accentColor: accentColor, selectedTab: $selectedTab)
+            SettingsView(bgColor: backgroundColor, secondColor: secondColor, accentColor: accentColor, selectedTab: $selectedTab, setOneExercises: $setOneExercises, setTwoExercises: $setTwoExercises, setThreeExercises: $setThreeExercises)
                 .tabItem {
                     Image(systemName: "gearshape.fill")
                 }

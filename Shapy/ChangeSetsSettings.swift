@@ -13,27 +13,18 @@ struct DisclosureGroupTemplate: View {
     let secondColor: CGColor
     let accentColor: Color
     let thirdColor = Color(red: 217/255, green: 217/255, blue: 217/255)
-    
-    @State private var stepperValue1 = 1
-    @State private var stepperValue2 = 1
-    @State private var stepperValue3 = 1
-    
-    var allExercises = ["Pull-Ups", "Push-Ups", "Crunch", "Plank"]
-    
-    @State private var defaultSelectedExercise1 = "Pull-Ups"
-    @State private var defaultSelectedExercise2 = "Pull-Ups"
-    @State private var defaultSelectedExercise3 = "Pull-Ups"
-    
-    var body: some View{
+
+    @Binding var setExercises: [Exercise]
+
+    var allExercises = ["Pull-Ups", "Push-Ups", "Crunch", "Plank", "Nothing"]
+
+    var body: some View {
         GroupBox() {
-            // First Exercise
-            exerciseGroup(stepperValue: $stepperValue1, selectedExercise: $defaultSelectedExercise1)
+
+            ForEach(setExercises.indices, id: \.self) { index in
+                exerciseGroup(stepperValue: $setExercises[index].number, selectedExercise: $setExercises[index].name)
+            }
             
-            // Second Exercise
-            exerciseGroup(stepperValue: $stepperValue2, selectedExercise: $defaultSelectedExercise2)
-            
-            // Third Exercise
-            exerciseGroup(stepperValue: $stepperValue3, selectedExercise: $defaultSelectedExercise3)
         }
         .groupBoxStyle(CustomColorGroupBox(bgColor: secondColor))
     }
@@ -88,59 +79,61 @@ struct ChangeSetsSettings: View {
     let bgColor: CGColor
     let secondColor: CGColor
     let accentColor: Color
-
+    @Binding var setOneExercisesArray: [Exercise]
+    @Binding var setTwoExercisesArray: [Exercise]
+    @Binding var setThreeExercisesArray: [Exercise]
     
     var body: some View {
         ZStack{
             Color(bgColor)
                 .ignoresSafeArea()
             
-            VStack{
-                
-                // Set 1
-                DisclosureGroup("Set 1") {
-                    DisclosureGroupTemplate(bgColor: bgColor, secondColor: secondColor, accentColor: accentColor)
-                }
-                .foregroundColor(Color.white)
-                .frame(width: 300)
-                .font(.system(size: 30))
-                
-    
-                // Set 2
-                DisclosureGroup("Set 2") {
-                    DisclosureGroupTemplate(bgColor: bgColor, secondColor: secondColor, accentColor: accentColor)
-                }
-                .foregroundColor(Color.white)
-                .frame(width: 300)
-                .font(.system(size: 30))
-                
-                // Set 3
-                DisclosureGroup("Set 3") {
-                    DisclosureGroupTemplate(bgColor: bgColor, secondColor: secondColor, accentColor: accentColor)
-                }
-                .foregroundColor(Color.white)
-                .frame(width: 300)
-                .font(.system(size: 30))
-                
-                Spacer()
-                
-                // Save Button
-                Button(action: {
-                    // TODO: Save all data
-                }){
-                    Text("Save")
+            ScrollView {
+                VStack{
+                    
+                    // Set 1
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color(bgColor))
+                        DisclosureGroup("Set 1") {
+                            DisclosureGroupTemplate(bgColor: bgColor, secondColor: secondColor, accentColor: accentColor, setExercises: $setOneExercisesArray)
+                        }
+                        .foregroundColor(Color.white)
+                        .frame(width: 300)
                         .font(.system(size: 30))
-                        .foregroundColor(Color(bgColor))
-                        .padding()
-                        .frame(width: 270, height:55)
-                        .background(accentColor)
-                        .cornerRadius(10)
+                    }
+                    
+                    // Set 2
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color(bgColor))
+                        DisclosureGroup("Set 2") {
+                            DisclosureGroupTemplate(bgColor: bgColor, secondColor: secondColor, accentColor: accentColor, setExercises: $setTwoExercisesArray)
+                        }
+                        .foregroundColor(Color.white)
+                        .frame(width: 300)
+                        .font(.system(size: 30))
+                    }
+                    
+                    // Set 3
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color(bgColor))
+                        DisclosureGroup("Set 3") {
+                            DisclosureGroupTemplate(bgColor: bgColor, secondColor: secondColor, accentColor: accentColor, setExercises: $setThreeExercisesArray)
+                        }
+                        .foregroundColor(Color.white)
+                        .frame(width: 300)
+                        .font(.system(size: 30))
+                    }
+                    
+                    Spacer()
                 }
-                .padding(.bottom, 40)
             }
         }
     }
 }
+
 
 struct ChangeSetsSettings_Previews: PreviewProvider {
     static var previews: some View {

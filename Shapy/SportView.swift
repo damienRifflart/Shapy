@@ -60,6 +60,10 @@ struct SportView: View {
     let accentColor: Color
     @Binding var selectedTab: Int
     @State var breakViewActive:Bool = false
+    @Binding var setOneExercises: [Exercise]
+    @Binding var setTwoExercises: [Exercise]
+    @Binding var setThreeExercises: [Exercise]
+    
     
     var body: some View {
         
@@ -78,12 +82,12 @@ struct SportView: View {
                 
                 // Exercise Text
                 VStack{
-                    Text("15")
+                    Text(String(setOneExercises[0].number))
                         .font(.system(size:50))
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
                     
-                    Text("Push-Ups")
+                    Text(setOneExercises[0].name)
                         .foregroundColor(Color.accentColor)
                         .font(.system(size:50))
                 }

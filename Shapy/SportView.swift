@@ -126,7 +126,7 @@ struct SportView: View {
                         .background(accentColor)
                         .cornerRadius(10)
                         .sheet(isPresented: $breakViewActive) {
-                            if setIndex == 0 && exerciseIndex == 0{
+                            if setIndex == 2 && exerciseIndex == 2{
                                 CongratsView(bgColor: bgColor, accentColor: accentColor, setIndex: setIndex)
                             } else {
                                 BreakView(bgColor: bgColor, accentColor: accentColor, breakViewActive: $breakViewActive, setIndex: $setIndex, exerciseIndex: $exerciseIndex, breakTime: $breakTime)

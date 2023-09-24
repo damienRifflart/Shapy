@@ -1,9 +1,11 @@
 import SwiftUI
 
-struct Exercise {
+struct Exercise: Codable, Identifiable {
+    var id = UUID()
     var name: String
     var number: Int
 }
+
 
 struct ContentView: View {
     
@@ -20,21 +22,41 @@ struct ContentView: View {
     
     @State private var setExercises: [[Exercise]] = [
         [
-            Exercise(name: "Pull-Ups", number: 1),
             Exercise(name: "Push-Ups", number: 1),
-            Exercise(name: "Plank", number: 1)
+            Exercise(name: "Push-Ups", number: 1),
+            Exercise(name: "Push-Ups", number: 1)
         ],
         [
-            Exercise(name: "Pull-Ups", number: 1),
             Exercise(name: "Push-Ups", number: 1),
-            Exercise(name: "Plank", number: 1)
+            Exercise(name: "Push-Ups", number: 1),
+            Exercise(name: "Push-Ups", number: 1)
         ],
         [
-            Exercise(name: "Pull-Ups", number: 1),
             Exercise(name: "Push-Ups", number: 1),
-            Exercise(name: "Plank", number: 1)
+            Exercise(name: "Push-Ups", number: 1),
+            Exercise(name: "Push-Ups", number: 1)
         ]
     ]
+    
+    func saveData() {
+        let encoder = JSONEncoder()
+        if let encodedData = try? encoder.encode(setExercises) {
+            UserDefaults.standard.set(encodedData, forKey: "exercisesKey")
+        }
+        
+        UserDefaults.standard.set(breakTime, forKey: "breakTimeKey")
+    }
+    
+    func loadData() {
+        if let exerciseData = UserDefaults.standard.data(forKey: "exercisesKey"),
+           let exercises = try? JSONDecoder().decode([[Exercise]].self, from: exerciseData) {
+            setExercises = exercises
+        }
+        
+        if let savedBreakTime = UserDefaults.standard.value(forKey: "breakTimeKey") as? Int {
+            breakTime = savedBreakTime
+        }
+    }
     
     var body: some View {
         
@@ -60,6 +82,14 @@ struct ContentView: View {
                 }
                 .tag(2)
         }
+        .onAppear {
+            loadData()
+        }
+        
+        .onDisappear {
+            saveData()
+        }
+        
         .accentColor(accentColor)
         
     }

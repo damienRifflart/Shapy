@@ -4,9 +4,11 @@
 A beautiful sport application for iOs with break times, custom exercises and more!
 
 
-## Authors
+## To-Do
 
-- [@ooDams](https://github.com/ooDams)
+- In settings tab, a placeholder with the username.
+- A "time exercising" in the home tab.
+- Some video ressources.
 
 ## Color Reference
 

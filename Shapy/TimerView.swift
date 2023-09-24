@@ -48,7 +48,7 @@ struct TimerViewBreak: View {
                     .trim(from: 1 - (CGFloat(timeRemaining) / CGFloat(breakTime)), to: 1)
                     
                     // Stroke color
-                    .stroke(timeRemaining > Int(0.66) ? Color.green : timeRemaining > Int(0.33) ? Color.yellow : Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
+                    .stroke(timeRemaining > (breakTime/3)*2 ? Color.green : timeRemaining > breakTime/3 ? Color.yellow : Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
                     
                     .rotationEffect(.degrees(-90))
                     .animation(.easeInOut, value: timeRemaining)
@@ -160,7 +160,7 @@ struct TimerViewSport: View {
                     .trim(from: 1 - (timeRemaining / defaultTimeRemaining), to: 1)
                 
                 // Stroke color
-                    .stroke(timeRemaining > 0.66 ? Color.green : timeRemaining > 0.33 ? Color.yellow : Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
+                    .stroke(timeRemaining > (defaultTimeRemaining/3)*2 ? Color.green : timeRemaining > defaultTimeRemaining/3 ? Color.yellow : Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
                 
                     .rotationEffect(.degrees(-90))
                     .animation(.easeInOut, value: timeRemaining)

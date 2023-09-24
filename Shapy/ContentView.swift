@@ -21,18 +21,18 @@ struct ContentView: View {
     @State private var setExercises: [[Exercise]] = [
         [
             Exercise(name: "Pull-Ups", number: 1),
-            Exercise(name: "Push-Ups", number: 2),
-            Exercise(name: "Plank", number: 3)
+            Exercise(name: "Push-Ups", number: 1),
+            Exercise(name: "Plank", number: 1)
         ],
         [
-            Exercise(name: "Pull-Ups", number: 4),
-            Exercise(name: "Push-Ups", number: 5),
-            Exercise(name: "Plank", number: 6)
+            Exercise(name: "Pull-Ups", number: 1),
+            Exercise(name: "Push-Ups", number: 1),
+            Exercise(name: "Plank", number: 1)
         ],
         [
-            Exercise(name: "Pull-Ups", number: 7),
-            Exercise(name: "Push-Ups", number: 8),
-            Exercise(name: "Plank", number: 9)
+            Exercise(name: "Pull-Ups", number: 1),
+            Exercise(name: "Push-Ups", number: 1),
+            Exercise(name: "Plank", number: 1)
         ]
     ]
     

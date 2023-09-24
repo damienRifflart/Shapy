@@ -89,7 +89,13 @@ struct SportView: View {
                 
                 // Exercise Text
                 VStack{
-                    Text(String(setExercises[setIndex][exerciseIndex].number))
+                    // If the name is "Plank"
+                    Text(setExercises[setIndex][exerciseIndex].name == "Plank"
+                         // Then put a s for seconds
+                         ? String((setExercises[setIndex][exerciseIndex].number)) + "s"
+                         // If not don't put one
+                         : String((setExercises[setIndex][exerciseIndex].number)))
+                    
                         .font(.system(size:50))
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)

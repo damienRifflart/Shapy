@@ -65,6 +65,7 @@ struct SportView: View {
     let accentColor: Color
     @Binding var selectedTab: Int
     @State var breakViewActive: Bool = false
+    @State var congratsViewActive: Bool = false
     @Binding var setExercises: [[Exercise]]
     @Binding var breakTime: Int
 
@@ -124,9 +125,13 @@ struct SportView: View {
                         .frame(width: 270, height:55)
                         .background(accentColor)
                         .cornerRadius(10)
-                        .sheet(isPresented: $breakViewActive, content: {
-                            BreakView(bgColor: bgColor, accentColor: accentColor, breakViewActive: $breakViewActive, setIndex: $setIndex, exerciseIndex: $exerciseIndex, breakTime: $breakTime)
-                        })
+                        .sheet(isPresented: $breakViewActive) {
+                            if setIndex == 0 && exerciseIndex == 0{
+                                CongratsView(bgColor: bgColor, accentColor: accentColor, setIndex: setIndex)
+                            } else {
+                                BreakView(bgColor: bgColor, accentColor: accentColor, breakViewActive: $breakViewActive, setIndex: $setIndex, exerciseIndex: $exerciseIndex, breakTime: $breakTime)
+                            }
+                        }
                 }
                 .padding(.bottom, 81)
                 

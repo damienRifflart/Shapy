@@ -17,6 +17,7 @@
 		D79BF0CF2AA085A4006A8C17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D79BF0CE2AA085A4006A8C17 /* Assets.xcassets */; };
 		D79BF0D22AA085A4006A8C17 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D79BF0D12AA085A4006A8C17 /* Preview Assets.xcassets */; };
 		D7B90F9B2AB75A1900DDFAD7 /* ChangeSetsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B90F9A2AB75A1900DDFAD7 /* ChangeSetsSettings.swift */; };
+		D7ECD89D2AC02789001CE38C /* CongratsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ECD89C2AC02789001CE38C /* CongratsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D79BF0CE2AA085A4006A8C17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D79BF0D12AA085A4006A8C17 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D7B90F9A2AB75A1900DDFAD7 /* ChangeSetsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeSetsSettings.swift; sourceTree = "<group>"; };
+		D7ECD89C2AC02789001CE38C /* CongratsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				D717F9052AB732E0002390A9 /* TimerView.swift */,
 				D73B121F2AB6202800478B65 /* SettingsView.swift */,
 				D7B90F9A2AB75A1900DDFAD7 /* ChangeSetsSettings.swift */,
+				D7ECD89C2AC02789001CE38C /* CongratsView.swift */,
 				D79BF0D02AA085A4006A8C17 /* Preview Content */,
 			);
 			path = Shapy;
@@ -161,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D73B12202AB6202800478B65 /* SettingsView.swift in Sources */,
+				D7ECD89D2AC02789001CE38C /* CongratsView.swift in Sources */,
 				D74D36302AB5EDFB00E05ED7 /* HomeView.swift in Sources */,
 				D74D36322AB5EEA100E05ED7 /* SportView.swift in Sources */,
 				D717F9062AB732E0002390A9 /* TimerView.swift in Sources */,

@@ -15,9 +15,8 @@ struct SettingsView: View {
     @Binding var selectedTab: Int
     @Binding var setExercises: [[Exercise]]
     
-    @Binding var setIndex: Int
-    @Binding var exerciseIndex: Int
     @Binding var breakTime: Int
+    @Binding var username: String
     
     var body: some View {
         
@@ -33,7 +32,7 @@ struct SettingsView: View {
                     Button(action: {
                         
                     }) {
-                        NavigationLink(destination: ChangeSetsSettings(bgColor: bgColor, secondColor: secondColor, accentColor: accentColor, setExercises: $setExercises, breakTime: breakTime)) {
+                        NavigationLink(destination: ChangeSetsSettings(bgColor: bgColor, secondColor: secondColor, accentColor: accentColor, setExercises: $setExercises, breakTime: breakTime, username: username)) {
                             
                             HStack{
                                 Spacer()
@@ -56,7 +55,7 @@ struct SettingsView: View {
                             .padding(.top, 40)
                         }
                     }
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 10)
                     
                     // Break time entry
                     HStack{
@@ -82,9 +81,32 @@ struct SettingsView: View {
                     .frame(width: 290, height: 55)
                     .background(Color(secondColor))
                     .cornerRadius(10)
+                    .padding(.bottom, 10)
+                    
+                    // Username entry
+                    HStack{
+                        Text("Username")
+                            .font(.system(size:24))
+                            .foregroundColor(Color.white)
+                            .padding(.leading, 12)
+                        
+                        Spacer()
+                        
+                        TextField("Username", text: $username)
+                            .frame(width: 140)
+                            .background(accentColor)
+                            .font(.system(size: 23))
+                            .foregroundColor(Color(bgColor))
+                            .cornerRadius(5)
+                            .padding(.trailing, 10)
+                    }
+                    .frame(width: 290, height: 55)
+                    .background(Color(secondColor))
+                    .cornerRadius(10)
 
                     Spacer()
                     
+                    // Reset Data button
                     Button(action: {
                         for setIndex in 0..<setExercises.count {
                             for exerciseIndex in 0..<setExercises[setIndex].count {
@@ -94,6 +116,7 @@ struct SettingsView: View {
                         }
                             
                         breakTime = 1
+                        username = "User"
                         
                         // Save the data to UserDefaults
                         let encoder = JSONEncoder()
@@ -102,6 +125,7 @@ struct SettingsView: View {
                         }
                         
                         UserDefaults.standard.set(breakTime, forKey: "breakTimeKey")
+                        UserDefaults.standard.set(username, forKey: "usernameKey")
 
 
                     }){

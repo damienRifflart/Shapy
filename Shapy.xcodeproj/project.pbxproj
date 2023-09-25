@@ -18,6 +18,8 @@
 		D79BF0D22AA085A4006A8C17 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D79BF0D12AA085A4006A8C17 /* Preview Assets.xcassets */; };
 		D7B90F9B2AB75A1900DDFAD7 /* ChangeSetsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B90F9A2AB75A1900DDFAD7 /* ChangeSetsSettings.swift */; };
 		D7ECD89D2AC02789001CE38C /* CongratsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ECD89C2AC02789001CE38C /* CongratsView.swift */; };
+		D7FF99E12AC20BCD00AEE741 /* endSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D7FF99DF2AC20BCD00AEE741 /* endSound.mp3 */; };
+		D7FF99E22AC20BCD00AEE741 /* startSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D7FF99E02AC20BCD00AEE741 /* startSound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		D79BF0D12AA085A4006A8C17 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D7B90F9A2AB75A1900DDFAD7 /* ChangeSetsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeSetsSettings.swift; sourceTree = "<group>"; };
 		D7ECD89C2AC02789001CE38C /* CongratsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsView.swift; sourceTree = "<group>"; };
+		D7FF99DF2AC20BCD00AEE741 /* endSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = endSound.mp3; path = Graphics/endSound.mp3; sourceTree = "<group>"; };
+		D7FF99E02AC20BCD00AEE741 /* startSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = startSound.mp3; path = Graphics/startSound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +53,8 @@
 		D79BF0BE2AA085A2006A8C17 = {
 			isa = PBXGroup;
 			children = (
+				D7FF99DF2AC20BCD00AEE741 /* endSound.mp3 */,
+				D7FF99E02AC20BCD00AEE741 /* startSound.mp3 */,
 				D79BF0C92AA085A2006A8C17 /* Shapy */,
 				D79BF0C82AA085A2006A8C17 /* Products */,
 			);
@@ -152,7 +158,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D79BF0D22AA085A4006A8C17 /* Preview Assets.xcassets in Resources */,
+				D7FF99E12AC20BCD00AEE741 /* endSound.mp3 in Resources */,
 				D79BF0CF2AA085A4006A8C17 /* Assets.xcassets in Resources */,
+				D7FF99E22AC20BCD00AEE741 /* startSound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

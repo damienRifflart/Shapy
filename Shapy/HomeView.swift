@@ -15,6 +15,7 @@ struct HomeView: View {
     
     var breakTime: Int
     var setExercises: [[Exercise]]
+    var username: String
     
     var body: some View {
         
@@ -28,7 +29,7 @@ struct HomeView: View {
                     .foregroundColor(Color.white)
                     .padding(.top, 60)
                 
-                Text("Dams")
+                Text(username)
                     .font(.system(size:50))
                     .foregroundColor(Color.accentColor)
                 
@@ -64,6 +65,7 @@ struct HomeView: View {
         }
         
         UserDefaults.standard.set(breakTime, forKey: "breakTimeKey")
+        UserDefaults.standard.set(username, forKey: "usernameKey")
     }
 }
 

@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
 
 struct TimerViewBreak: View {
+    
+    var audioPlayerStart: AVAudioPlayer?
+    var audioPlayerEnd: AVAudioPlayer?
     
     let lineWidth: CGFloat = 20
     let radius: CGFloat = 110
@@ -34,6 +38,17 @@ struct TimerViewBreak: View {
         _timeRemaining = State(initialValue: breakTime.wrappedValue)
         
         self.setExercises = setExercises
+        
+        if let startSoundURL = Bundle.main.url(forResource: "startSound", withExtension: "mp3"),
+            let endSoundURL = Bundle.main.url(forResource: "endSound", withExtension: "mp3") {
+            do {
+                audioPlayerStart = try AVAudioPlayer(contentsOf: startSoundURL)
+                audioPlayerEnd = try AVAudioPlayer(contentsOf: endSoundURL)
+            } catch {
+                print("Erreur lors du chargement du son : \(error.localizedDescription)")
+            }
+        }
+
     }
     
     var body: some View {
@@ -66,6 +81,13 @@ struct TimerViewBreak: View {
             if timeRemaining > 0 {
                 timeRemaining -= 1
                 
+                if timeRemaining == 3 || timeRemaining == 2 || timeRemaining == 1{
+                self.audioPlayerStart?.play()
+                
+                } else if timeRemaining == 0 {
+                    self.audioPlayerEnd?.play()
+                }
+                
             } else {
 
                 if exerciseIndex == 2 && setIndex == 2{
@@ -78,18 +100,19 @@ struct TimerViewBreak: View {
                     exerciseIndex += 1
                     breakViewActive = false
                 
-                    while exerciseIndex < 3 {
+                    while exerciseIndex <= 3 {
+                        // Vérifiez si exerciseIndex atteint 2
+                        if exerciseIndex == 3{
+                            // Si c'est le cas, passez au prochain set et réinitialisez exerciseIndex
+                            setIndex += 1
+                            exerciseIndex = 0
+                        }
+                        
                         if setExercises[setIndex][exerciseIndex].name == "None" {
                             // Si l'exercice actuel est "None", passez au suivant
                             exerciseIndex += 1
-                            
-                            // Vérifiez si exerciseIndex atteint 2
-                            if exerciseIndex == 3 {
-                                // Si c'est le cas, passez au prochain set et réinitialisez exerciseIndex
-                                setIndex += 1
-                                exerciseIndex = 0
-                            }
-                            
+
+                        
                         } else {
                             // Si l'exercice n'est pas "None", sortez de la boucle
                             break
@@ -102,6 +125,9 @@ struct TimerViewBreak: View {
 }
 
 struct TimerViewSport: View {
+    
+    var audioPlayerStart: AVAudioPlayer?
+    var audioPlayerEnd: AVAudioPlayer?
     
     let lineWidth: CGFloat = 20
     let radius: CGFloat = 110
@@ -129,6 +155,17 @@ struct TimerViewSport: View {
         let defaultTimeRemaining = Self.calculateTimeRemaining(setExercises: setExercises, setIndex: setIndexValue, exerciseIndex: exerciseIndexValue)
         self._defaultTimeRemaining = State(initialValue: CGFloat(defaultTimeRemaining))
         self._timeRemaining = State(initialValue: CGFloat(defaultTimeRemaining))
+        
+        if let startSoundURL = Bundle.main.url(forResource: "startSound", withExtension: "mp3"),
+            let endSoundURL = Bundle.main.url(forResource: "endSound", withExtension: "mp3") {
+            do {
+                audioPlayerStart = try AVAudioPlayer(contentsOf: startSoundURL)
+                audioPlayerEnd = try AVAudioPlayer(contentsOf: endSoundURL)
+            } catch {
+                print("Erreur lors du chargement du son : \(error.localizedDescription)")
+            }
+        }
+        
     }
     
     // Function to calculate defaultTimeRemaining
@@ -184,6 +221,13 @@ struct TimerViewSport: View {
             guard isActive else { return }
             if timeRemaining > 0 {
                 timeRemaining -= 1
+                
+                if timeRemaining == 3 || timeRemaining == 2 || timeRemaining == 1{
+                self.audioPlayerStart?.play()
+                
+                } else if timeRemaining == 0 {
+                    self.audioPlayerEnd?.play()
+                }
                 
             } else {
                 

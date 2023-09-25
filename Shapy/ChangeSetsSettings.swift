@@ -81,6 +81,7 @@ struct ChangeSetsSettings: View {
     let accentColor: Color
     @Binding var setExercises: [[Exercise]]
     var breakTime: Int
+    var username: String
     
     var body: some View {
         ZStack{
@@ -143,6 +144,7 @@ struct ChangeSetsSettings: View {
         }
         
         UserDefaults.standard.set(breakTime, forKey: "breakTimeKey")
+        UserDefaults.standard.set(username, forKey: "usernameKey")
     }
 }
 

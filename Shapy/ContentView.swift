@@ -19,6 +19,7 @@ struct ContentView: View {
     
     // Sport variables
     @State private var breakTime: Int = 1
+    @State private var username: String = "User"
     
     @State private var setExercises: [[Exercise]] = [
         [
@@ -45,6 +46,7 @@ struct ContentView: View {
         }
         
         UserDefaults.standard.set(breakTime, forKey: "breakTimeKey")
+        UserDefaults.standard.set(username, forKey: "usernameKey")
     }
     
     func loadData() {
@@ -56,6 +58,10 @@ struct ContentView: View {
         if let savedBreakTime = UserDefaults.standard.value(forKey: "breakTimeKey") as? Int {
             breakTime = savedBreakTime
         }
+        
+        if let savedUsername = UserDefaults.standard.value(forKey: "usernameKey") as? String {
+            username = savedUsername
+        }
     }
     
     var body: some View {
@@ -63,7 +69,7 @@ struct ContentView: View {
         // Navigation Bar
         TabView(selection: $selectedTab) {
             
-            HomeView(bgColor: backgroundColor, accentColor: accentColor, selectedTab: $selectedTab, breakTime: breakTime, setExercises: setExercises)
+            HomeView(bgColor: backgroundColor, accentColor: accentColor, selectedTab: $selectedTab, breakTime: breakTime, setExercises: setExercises, username: username)
                 .tabItem {
                     Image(systemName: "house")
                 }
@@ -76,7 +82,7 @@ struct ContentView: View {
                 }
                 .tag(1)
 
-            SettingsView(bgColor: backgroundColor, secondColor: secondColor, accentColor: accentColor, selectedTab: $selectedTab, setExercises: $setExercises, breakTime: $breakTime)
+            SettingsView(bgColor: backgroundColor, secondColor: secondColor, accentColor: accentColor, selectedTab: $selectedTab, setExercises: $setExercises, breakTime: $breakTime, username: $username)
                 .tabItem {
                     Image(systemName: "gearshape.fill")
                 }

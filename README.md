@@ -6,9 +6,7 @@ A beautiful sport application for iOs with break times, custom exercises and mor
 
 ## To-Do
 
-- In settings tab, a placeholder with the username.
-- A "time exercising" in the home tab.
-- Some video ressources.
+- Correct exercises times and all.
 
 ## Color Reference
 
@@ -26,6 +24,7 @@ A beautiful sport application for iOs with break times, custom exercises and mor
 - Custom break time
 - Persistent Data
 - Timers
+- Sound Effects
 
 
 ## Related

@@ -75,6 +75,7 @@ struct SportView: View {
     @State private var exerciseIndex: Int = 0
     @State private var showAlert = false
     
+    
     var body: some View {
         
         ZStack{
@@ -140,15 +141,16 @@ struct SportView: View {
             }
         }
         .onAppear() {
-            if setExercises[0][0].name == "None" {
+            if setExercises[0][0].name == "None" || setExercises[2][2].name == "None"{
                 showAlert = true
                 selectedTab = 0
             }
         }
+        
         .alert(isPresented: $showAlert) {
             Alert(
                 title: Text("Error"),
-                message: Text("The first exercise can't be None."),
+                message: Text("The first nor the last exercise can be None."),
                 dismissButton: .default(Text("Got it!"))
             )
         }

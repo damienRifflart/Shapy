@@ -17,6 +17,8 @@ struct BreakView: View{
     @Binding var exerciseIndex: Int
     @Binding var breakTime: Int
     
+    var setExercises: [[Exercise]]
+    
     var body: some View{
         
         ZStack{
@@ -43,7 +45,7 @@ struct BreakView: View{
                 Spacer()
                 
                 // Timer
-                TimerViewBreak(breakViewActive: $breakViewActive, setIndex: $setIndex, exerciseIndex: $exerciseIndex, breakTime: $breakTime)
+                TimerViewBreak(breakViewActive: $breakViewActive, setIndex: $setIndex, exerciseIndex: $exerciseIndex, breakTime: $breakTime, setExercises: setExercises)
 
                 
                 Spacer()
@@ -71,7 +73,7 @@ struct SportView: View {
 
     @State private var setIndex: Int = 0
     @State private var exerciseIndex: Int = 0
-    
+    @State private var showAlert = false
     
     var body: some View {
         
@@ -129,13 +131,26 @@ struct SportView: View {
                             if setIndex == 2 && exerciseIndex == 2{
                                 CongratsView(bgColor: bgColor, accentColor: accentColor, setIndex: setIndex)
                             } else {
-                                BreakView(bgColor: bgColor, accentColor: accentColor, breakViewActive: $breakViewActive, setIndex: $setIndex, exerciseIndex: $exerciseIndex, breakTime: $breakTime)
+                                BreakView(bgColor: bgColor, accentColor: accentColor, breakViewActive: $breakViewActive, setIndex: $setIndex, exerciseIndex: $exerciseIndex, breakTime: $breakTime, setExercises: setExercises)
                             }
                         }
                 }
                 .padding(.bottom, 81)
                 
             }
+        }
+        .onAppear() {
+            if setExercises[0][0].name == "None" {
+                showAlert = true
+                selectedTab = 0
+            }
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Error"),
+                message: Text("The first exercise can't be None."),
+                dismissButton: .default(Text("Got it!"))
+            )
         }
     }
 }

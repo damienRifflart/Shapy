@@ -16,7 +16,7 @@ struct DisclosureGroupTemplate: View {
 
     @Binding var setExercises: [Exercise]
 
-    var allExercises = ["Pull-Ups", "Push-Ups", "Crunch", "Plank"]
+    var allExercises = ["Pull-Ups", "Push-Ups", "Crunch", "Plank", "None"]
 
     var body: some View {
         GroupBox() {
@@ -80,6 +80,7 @@ struct ChangeSetsSettings: View {
     let secondColor: CGColor
     let accentColor: Color
     @Binding var setExercises: [[Exercise]]
+    var breakTime: Int
     
     var body: some View {
         ZStack{
@@ -129,6 +130,19 @@ struct ChangeSetsSettings: View {
                 }
             }
         }
+        
+        .onDisappear {
+            saveData()
+        }
+    }
+    
+    func saveData() {
+        let encoder = JSONEncoder()
+        if let encodedData = try? encoder.encode(setExercises) {
+            UserDefaults.standard.set(encodedData, forKey: "exercisesKey")
+        }
+        
+        UserDefaults.standard.set(breakTime, forKey: "breakTimeKey")
     }
 }
 

@@ -63,12 +63,12 @@ struct ContentView: View {
         // Navigation Bar
         TabView(selection: $selectedTab) {
             
-            HomeView(bgColor: backgroundColor, accentColor: accentColor, selectedTab: $selectedTab)
+            HomeView(bgColor: backgroundColor, accentColor: accentColor, selectedTab: $selectedTab, breakTime: breakTime, setExercises: setExercises)
                 .tabItem {
                     Image(systemName: "house")
                 }
                 .tag(0)
-
+            
             SportView(bgColor: backgroundColor, accentColor: accentColor,
                       selectedTab: $selectedTab, setExercises: $setExercises, breakTime: $breakTime)
                 .tabItem {

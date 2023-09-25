@@ -15,17 +15,16 @@ struct TimerViewBreak: View {
     let radius: CGFloat = 110
     var isActive: Bool = true
     
-    let test: CGFloat = 1
-    
     @Binding var breakViewActive: Bool
     
     @Binding var setIndex: Int
     @Binding var exerciseIndex: Int
     @Binding var breakTime: Int
+    var setExercises: [[Exercise]]
     
     @State private var timeRemaining: Int
     
-    init(breakViewActive: Binding<Bool>, setIndex: Binding<Int>, exerciseIndex: Binding<Int>, breakTime: Binding<Int>) {
+    init(breakViewActive: Binding<Bool>, setIndex: Binding<Int>, exerciseIndex: Binding<Int>, breakTime: Binding<Int>, setExercises: [[Exercise]]) {
         self._breakViewActive = breakViewActive
         self._setIndex = setIndex
         self._exerciseIndex = exerciseIndex
@@ -33,6 +32,8 @@ struct TimerViewBreak: View {
         
         // Initialize timeRemaining with the initial value of breakTime
         _timeRemaining = State(initialValue: breakTime.wrappedValue)
+        
+        self.setExercises = setExercises
     }
     
     var body: some View {
@@ -66,28 +67,35 @@ struct TimerViewBreak: View {
                 timeRemaining -= 1
                 
             } else {
-                
-                if exerciseIndex == 2{
+
+                if exerciseIndex == 2 && setIndex == 2{
+                    setIndex = 0
+                    exerciseIndex = 0
+                        
+                // If only one set has been done
+                } else {
                     
-                    // If all sets have been done
-                    if setIndex == 2{
-                        // TODO: Congratulation View
-                        
-                        setIndex = 0
-                        exerciseIndex = -1
-                        
-                    // If only one set has been done
-                    } else {
-                        // Putting exerciseIndex to -1 because it will increase after to 0
-                        exerciseIndex = -1
-                        setIndex += 1
+                    exerciseIndex += 1
+                    breakViewActive = false
+                
+                    while exerciseIndex < 3 {
+                        if setExercises[setIndex][exerciseIndex].name == "None" {
+                            // Si l'exercice actuel est "None", passez au suivant
+                            exerciseIndex += 1
+                            
+                            // Vérifiez si exerciseIndex atteint 2
+                            if exerciseIndex == 3 {
+                                // Si c'est le cas, passez au prochain set et réinitialisez exerciseIndex
+                                setIndex += 1
+                                exerciseIndex = 0
+                            }
+                            
+                        } else {
+                            // Si l'exercice n'est pas "None", sortez de la boucle
+                            break
+                        }
                     }
                 }
-                
-                exerciseIndex += 1
-                
-                breakViewActive = false
-                
             }
         })
     }

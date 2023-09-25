@@ -15,6 +15,8 @@ struct SettingsView: View {
     @Binding var selectedTab: Int
     @Binding var setExercises: [[Exercise]]
     
+    @Binding var setIndex: Int
+    @Binding var exerciseIndex: Int
     @Binding var breakTime: Int
     
     var body: some View {
@@ -31,7 +33,7 @@ struct SettingsView: View {
                     Button(action: {
                         
                     }) {
-                        NavigationLink(destination: ChangeSetsSettings(bgColor: bgColor, secondColor: secondColor, accentColor: accentColor, setExercises: $setExercises)) {
+                        NavigationLink(destination: ChangeSetsSettings(bgColor: bgColor, secondColor: secondColor, accentColor: accentColor, setExercises: $setExercises, breakTime: breakTime)) {
                             
                             HStack{
                                 Spacer()
@@ -84,8 +86,8 @@ struct SettingsView: View {
                     Spacer()
                     
                     Button(action: {
-                        for setIndex in 0...2 {
-                            for exerciseIndex in 0...2 {
+                        for setIndex in 0..<setExercises.count {
+                            for exerciseIndex in 0..<setExercises[setIndex].count {
                                 setExercises[setIndex][exerciseIndex].name = "Push-Ups"
                                 setExercises[setIndex][exerciseIndex].number = 1
                             }
@@ -116,6 +118,8 @@ struct SettingsView: View {
             }
         }
         .navigationTitle("Settings")
+
+
     }
 }
 

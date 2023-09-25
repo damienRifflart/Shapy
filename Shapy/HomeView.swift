@@ -13,6 +13,9 @@ struct HomeView: View {
     let accentColor: Color
     @Binding var selectedTab: Int
     
+    var breakTime: Int
+    var setExercises: [[Exercise]]
+    
     var body: some View {
         
         ZStack{
@@ -49,6 +52,18 @@ struct HomeView: View {
                 .padding(.bottom, 40)
             }
         }
+        .onAppear(){
+            saveData()
+        }
+    }
+    
+    func saveData() {
+        let encoder = JSONEncoder()
+        if let encodedData = try? encoder.encode(setExercises) {
+            UserDefaults.standard.set(encodedData, forKey: "exercisesKey")
+        }
+        
+        UserDefaults.standard.set(breakTime, forKey: "breakTimeKey")
     }
 }
 

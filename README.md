@@ -7,6 +7,7 @@ A beautiful sport application for iOs with break times, custom exercises and mor
 ## To-Do
 
 - Correct exercises times and all.
+- Persistent Data
 
 ## Color Reference
 
@@ -22,7 +23,6 @@ A beautiful sport application for iOs with break times, custom exercises and mor
 
 - Custom exercises
 - Custom break time
-- Persistent Data
 - Timers
 - Sound Effects
 

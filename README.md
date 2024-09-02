@@ -1,37 +1,40 @@
 
-# Welcome!
+<h1 align="center">
+  <br>
+  <img src="./Graphics/shapylogov2.png" alt="ShapyIcon" width="200"></a>
+  <br>
+  StudySmart
+  <br>
+</h1>
 
-A beautiful sport application for iOs with break times, custom exercises and more!
+<h4 align="center">A beautifully designed sport application for iOs with break times, custom exercises and more!</h4>
 
+This is the very first iOs application I have coded using Xcode. It is not on the Apple Store as it is not free to publish.
 
-## To-Do
+## Screenshots
+![](Graphics/0.png?raw=true)
+![](Graphics/1.png?raw=true)
+![](Graphics/2.png?raw=true)
+![](Graphics/3.png?raw=true)
+![](Graphics/4.png?raw=true)
 
-- Correct exercises times and all.
-- Persistent Data
+## Key Features
 
-## Color Reference
+* Custom exercises and sets
+* Can specify break times
+* Timers
+* Sound Effects
 
-| Color             | Hex                                                                |
-| ----------------- | ------------------------------------------------------------------ |
-| Accent Color | ![#F28E3D](https://via.placeholder.com/10/F28E3D?text=+) |
-| Second Color | ![#1E1E1E](https://via.placeholder.com/10/1E1E1E?text=+) |
-| BackgroundColor | ![#050505](https://via.placeholder.com/10/050505?text=+) |
+## Made with:
+- [Xcode](https://developer.apple.com/xcode/)
 
+## You may also like...
 
+- [StudySmart](https://github.com/damienRifflart/StudySmart) - Create homeworks with deadlines, custom subjects, times and more.
+- [MeteoMatin](https://github.com/damienRifflart/MeteoMatin) - Receive your personalized weather forecast every day!
 
-## Features
+## Contact
 
-- Custom exercises
-- Custom break time
-- Timers
-- Sound Effects
-
-
-## Related
-
-Here are some cool related projects
-
-[From Marioeguiluz](https://github.com/marioeguiluz/swiftui-widgets-fitness/tree/wip)
-and
-[from Karthironald](https://github.com/karthironald/BodyProgress).
+> Gmail: [rifflartdamiencontact@gmail.com](rifflartdamiencontact@gmail.com) &nbsp;&middot;&nbsp;
+> GitHub: [@damienRifflart](https://github.com/damienRifflart) &nbsp;&middot;&nbsp;
 

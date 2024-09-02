@@ -3,7 +3,7 @@
   <br>
   <img src="./Graphics/shapylogov2.png" alt="ShapyIcon" width="200"></a>
   <br>
-  StudySmart
+  Shapy
   <br>
 </h1>
 

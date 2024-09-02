@@ -12,11 +12,14 @@
 This is the very first iOs application I have coded using Xcode. It is not on the Apple Store as it is not free to publish.
 
 ## Screenshots
-![](Graphics/0.png?raw=true)
-![](Graphics/1.png?raw=true)
-![](Graphics/2.png?raw=true)
-![](Graphics/3.png?raw=true)
-![](Graphics/4.png?raw=true)
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
+    <img src="Graphics/0.jpg?raw=true" style="width: 30%;">
+    <img src="Graphics/1.jpg?raw=true" style="width: 30%;">
+    <img src="Graphics/2.jpg?raw=true" style="width: 30%;">
+    <img src="Graphics/3.jpg?raw=true" style="width: 30%;">
+    <img src="Graphics/4.jpg?raw=true" style="width: 30%;">
+    <img src="Graphics/5.jpg?raw=true" style="width: 30%;">
+</div>
 
 ## Key Features
 
